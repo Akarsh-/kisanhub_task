@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Task</title>
+{% load staticfiles %}
+<link rel= 'stylesheet' href ="{% static 'css/chartCSS.css' %}" type ='text/css'/>
+<link rel= 'stylesheet' href ="{% static 'css/bootstrap.min.css' %}" type ='text/css'/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{% static 'helloworld/start.js' %}"></script>
+<script src="{% static 'helloworld/country.js' %}"></script>
+<script src="{% static 'helloworld/countrydatavalues.js' %}"></script>
+<script src="{% static 'helloworld/dialog.js' %}"></script>
+</head>
+
+<body onload = "OnLoad()">
+	<div id = "maindiv">
+		{% block content%}
+		{% endblock %}
+	</div>
+</body>
+
+</html>

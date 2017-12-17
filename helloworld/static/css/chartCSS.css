@@ -1,0 +1,42 @@
+body {  
+  background: oldlace;
+}
+
+canvas {
+  border: 1px dotted red;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 350px;
+  background: #1D1F20;
+}
+
+.desc_btn {
+	padding-left: 24px;
+	color: rgba(0,0,0,0.54);
+	font-size: 12px;
+}
+
+.d_bg_div {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    background: rgba(0,0,0,0.2);
+}
+
+.d_div {
+	position: absolute;
+	width: 300px;
+	top : 50px;
+	box-shadow: 3px 3px 5px 6px rgba(0,0,0,0.37);
+}
+
+.input_item {
+	border: 0;
+    width: 60px;
+    text-align: center;
+    border-bottom: 2px solid rgba(0,0,0,0.37);
+}

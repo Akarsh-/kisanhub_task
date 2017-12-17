@@ -1,0 +1,123 @@
+{% extends "helloworld/header.html" %}
+
+{% block content %}
+{% load staticfiles %}
+	<link rel= 'stylesheet' href ="{% static 'css/chartCSS.css' %}" type ='text/css'/>
+	<script src="{% static 'helloworld/chart.js' %}"></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+	<H1 style="padding-left:24px;"> Question 2 </H1>
+	<div style="padding-left:24px;padding-right:24px;">
+		The data stored in Q1 can be represented in many ways depending upon user requirement. </br>
+		I have shown data in two different ways. <br/>
+		<br/>The first way has 3 charts showing all properties of region for 
+		a particular year.
+		This counld be used to view and analyze how weather behave in different months and different seasons, 
+		i.e which month or season get high rainfall or more sunshine or some temprature.
+	</div>
+	<div style="padding-top:24px;">
+	
+		<div class = "col-sm-3" style="display:inline-block;vertical-align: top;">
+			<div>
+				<label class="control-label" for="pwd">Year:</label>
+				<div style ="display:inline-block">          
+					<input type="number" class="input_item" id="input_1" placeholder="YYYY" 
+					value = "2017" name="pwd" onchange="OnInputChange(this)">
+					</input>
+				</div>
+			</div>
+			<div>
+				<label class="control-label" for="pwd">Region:</label>
+				<select class="selectpicker" id="select_1"></select>
+			</div>
+			<div id = "error_1" class = "desc_btn" style = "color:#a94442; padding:0;">
+				Data after November,2017 is unavailable.
+			</div>
+		</div>
+		<div style="display:inline-block;" class = "col-sm-8">
+			<div style="text-align:center;">
+				This graph represent maximum , minimum and mean temprature value for selected year and country.
+			</div>
+			<div class="chart-container" style="display:inline-block;width:100%;">
+				<canvas id="chart_1"></canvas>
+			</div>
+			
+		</div>
+		
+		<div style = "padding-top:24px;">
+			<div class = "col-sm-6" style = "display:inline-block;width:49.5%">
+				<div style="text-align:center";>
+					Total <span id = "p_c_1"></span> hours of sunshine.
+				</div>
+				<div class="chart-container">
+					<canvas id="chart_1a"></canvas>
+				</div>
+				
+			</div>
+			<div class = "col-sm-6" style = "display:inline-block;">
+				<div style="text-align:center";>
+					Total <span id = "p_c_2"></span> mm of rainfall.
+				</div>
+				<div class="chart-container">
+					<canvas id="chart_1b"></canvas>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div style="padding-top:35px;padding-bottom:35px;">
+		<div style="padding:24px;">
+			The second section gives an idea about selected weather options over a period of time for a country.
+			This information can be used to get estimate and predict approx. rainfall/sunshine, temprature 
+			for next year. There is also a option to see both rainfall and sunshine data which is intresting
+			thing to notice.
+		</div>
+		<div style="padding-top:24px;">
+			<div class ="col-sm-3" style ="display:inline-block;vertical-align:top;">
+				<div>
+					<div>
+						<label class="control-label" >From:</label>
+						<div style ="display:inline-block">          
+							<input type="number" class="input_item" id="input_2a" placeholder="YYYY" 
+							value = "2000" name="pwd" onchange="OnInputChange(this)">
+							</input>
+						</div>
+					</div>
+					<div>
+						<label class="control-label" >To:</label>
+						<div style ="display:inline-block">          
+							<input type="number" class="input_item" id="input_2b" placeholder="YYYY" 
+							value = "2017" name="pwd" onchange="OnInputChange(this)">
+							</input>
+						</div>
+					</div>
+					<div>
+						<label class="control-label" >Region:</label>
+						<select class="selectpicker" id="select_2"></select>
+					</div>	
+					<div>
+						<label class="control-label" >Value:</label>
+						<select class="selectpicker" id="select_2a"></select>
+					</div>	
+					<div id = "error_2" class = "desc_btn" style = "color:#a94442; padding:0;">
+						Data after November,2017 is unavailable.
+					</div>
+				</div>
+			</div>
+			<div class ="col-sm-8" style ="display:inline-block;">
+				<div class ="chart-explanation " style="margin:auto;text-align:center;">
+					This graph represent maximum , minimum, mean tempratures, sunshine hours, rainfall(mm).
+				</div>
+				<div class="chart-container" style="display:inline-block;width:100%;">
+					<canvas id="chart_2"></canvas>
+				</div>
+			</div>
+		</div>
+		
+		<div style = "padding:35px;">
+			There could be many other ways to represent data. One intresting way could be to compare weather between 
+			regions and see which region gets highest rainfall, or maximum number of sunshine hours or which region
+			 is coldest etc.
+		</div>
+	</div>
+{% endblock %}
