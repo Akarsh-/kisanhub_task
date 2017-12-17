@@ -6,7 +6,7 @@ I have done backend using python-django. The front end is done using HTML, CSS, 
 This was my first experience with python-django. I learnt and applied it for first time. 
 (Obviously there could be better ways of doing it)
 
-Also, I have used chart for first time.
+Also, I have used chartjs for first time.
 
 The whole project was fun overall.
 
