@@ -15,6 +15,7 @@ from urllib.request import Request, urlopen
 import re
 #from django.http import HttpResponse
 
+#get countries list
 def GetCountries(request):
 	lstCountries = []
 	lstCountriesIds = []
@@ -36,12 +37,15 @@ def GetCountries(request):
 	
 	return JsonResponse(data)
 	
+#returns main view	
 def TableView(request) :
 	return render(request, 'helloworld/home.html', {})
 
+#returns Q2 view
 def ChartView(request) :
 		return render(request, 'helloworld/chart.html', {})
 
+#function to get country maximum temp values based on ID	
 def GetTMaxCountryData(request) :
 
 	countryId= request.GET.get('id', None)
@@ -56,6 +60,7 @@ def GetTMaxCountryData(request) :
 	
 	return JsonResponse(data)
 	
+#function to get country sunshine values based on ID		
 def GetSunshineCountryData(request) :
 
 	countryId= request.GET.get('id', None)
@@ -70,6 +75,7 @@ def GetSunshineCountryData(request) :
 	
 	return JsonResponse(data)
 	
+#function to get country rainfall values based on ID		
 def GetRainfallCountryData(request) :
 
 	countryId= request.GET.get('id', None)
@@ -83,7 +89,8 @@ def GetRainfallCountryData(request) :
 	data = GetModelData(countryId, CountriesRainfallValue, strLinkAddress, oCountry)	
 	
 	return JsonResponse(data)
-	
+
+#function to get country minimum temp values based on ID		
 def GetTMinCountryData(request) :
 
 	countryId= request.GET.get('id', None)
@@ -96,7 +103,8 @@ def GetTMinCountryData(request) :
 	
 	data = GetModelData(countryId, CountriesTempMinValue, strLinkAddress, oCountry)	
 	return JsonResponse(data)
-	
+
+#function to get country mean temp values based on ID	
 def GetTMeanCountryData(request) :
 
 	countryId= request.GET.get('id', None)
@@ -109,7 +117,8 @@ def GetTMeanCountryData(request) :
 	
 	data = GetModelData(countryId, CountriesTempMeanValue, strLinkAddress, oCountry)	
 	return JsonResponse(data)
-	
+
+#get data , it parses file and do bulk insert at end
 def GetModelData(countryId, model, strLinkAddress, oCountry):
 	result = model.objects.filter(uCountryId = countryId)
 	lstMonths = []
@@ -137,6 +146,7 @@ def GetModelData(countryId, model, strLinkAddress, oCountry):
 	data['lstValue'] = lstTemp;	
 	return data
 	
+#read files	
 def GetFileLines(strLinkAddress):
 	url_request = Request(strLinkAddress, 
                       headers = {"User-Agent": "Mozilla/5.0"})
@@ -145,7 +155,8 @@ def GetFileLines(strLinkAddress):
 	file.close()
 	
 	return lines
-	
+
+#parse file
 def ParseData(lines):
 	lstMonths = []
 	lstValue = []
