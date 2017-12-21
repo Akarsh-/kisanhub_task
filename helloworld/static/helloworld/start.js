@@ -17,6 +17,9 @@ var appMainView = new app();
 
 app.prototype.start = function(callback)
 {
+	if(strMainUrl[strMainUrl.length - 1] == "/")
+		strMainUrl = strMainUrl.slice(0, -1);
+	
 	this.lstCountries = appMainView.lstCountries;
 	
 	if(this.lstCountries.length == 0)
