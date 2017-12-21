@@ -15,7 +15,7 @@ from urllib.request import Request, urlopen
 import re
 #from django.http import HttpResponse
 
-#get countries list
+#get countries list for showing main view and downloading information
 def GetCountries(request):
 	lstCountries = []
 	lstCountriesIds = []
@@ -36,14 +36,35 @@ def GetCountries(request):
 	data['lstCountriesIds'] = lstCountriesIds;
 	
 	return JsonResponse(data)
-	
-#returns main view	
-def TableView(request) :
-	return render(request, 'helloworld/home.html', {})
 
-#returns Q2 view
+#set country list if not alredy there
+def SetCountryList() :
+	countries = Country.objects.all()
+	insertData = []
+	#normally it should be directly added to DB via admin or via other form,this is hard coded to avoid that
+	if len(countries) == 0:
+		val = Country(name="UK")
+		insertData.append(val)
+		val = Country(name="England")
+		insertData.append(val)
+		val = Country(name="Wales")
+		insertData.append(val)
+		val = Country(name="Scotland")
+		insertData.append(val)
+		val = Country(name="England N")
+		insertData.append(val)
+		Country.objects.bulk_create(insertData)
+		
+
+#returns main view for Q1
+def TableView(request) :
+	SetCountryList();
+	return render(request, 'helloworld/home.html', {"url": request.get_full_path()})
+
+#returns main view for Q2
 def ChartView(request) :
-		return render(request, 'helloworld/chart.html', {})
+	SetCountryList();
+	return render(request, 'helloworld/chart.html', {"url": request.get_full_path()})
 
 #function to get country maximum temp values based on ID	
 def GetTMaxCountryData(request) :
@@ -60,7 +81,7 @@ def GetTMaxCountryData(request) :
 	
 	return JsonResponse(data)
 	
-#function to get country sunshine values based on ID		
+#function to get country sunshine values based on ID	
 def GetSunshineCountryData(request) :
 
 	countryId= request.GET.get('id', None)
@@ -74,8 +95,8 @@ def GetSunshineCountryData(request) :
 	data = GetModelData(countryId, CountriesSunshineValue, strLinkAddress, oCountry)	
 	
 	return JsonResponse(data)
-	
-#function to get country rainfall values based on ID		
+
+#function to get country rainfall values based on ID
 def GetRainfallCountryData(request) :
 
 	countryId= request.GET.get('id', None)
@@ -89,8 +110,8 @@ def GetRainfallCountryData(request) :
 	data = GetModelData(countryId, CountriesRainfallValue, strLinkAddress, oCountry)	
 	
 	return JsonResponse(data)
-
-#function to get country minimum temp values based on ID		
+	
+#function to get country minimum temp values based on ID
 def GetTMinCountryData(request) :
 
 	countryId= request.GET.get('id', None)
@@ -118,7 +139,7 @@ def GetTMeanCountryData(request) :
 	data = GetModelData(countryId, CountriesTempMeanValue, strLinkAddress, oCountry)	
 	return JsonResponse(data)
 
-#get data , it parses file and do bulk insert at end
+#get data , it parses file and do bulk insert at end	
 def GetModelData(countryId, model, strLinkAddress, oCountry):
 	result = model.objects.filter(uCountryId = countryId)
 	lstMonths = []
@@ -155,7 +176,7 @@ def GetFileLines(strLinkAddress):
 	file.close()
 	
 	return lines
-
+	
 #parse file
 def ParseData(lines):
 	lstMonths = []
@@ -198,8 +219,8 @@ def ParseData(lines):
 	
 	retData = {'lstMonths': lstMonths, 'lstValue':lstValue}
 	return retData
-	
 
+#clear db to rereal files
 def ClearDB(request):
 	print("clear db called")
 	CountriesTempMaxValue.objects.all().delete()
