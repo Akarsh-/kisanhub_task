@@ -10,6 +10,11 @@ Also, I have used chartjs for first time.
 
 The whole project was fun overall.
 
-To start project just install app "helloworld" (sorry for this name)
+To start project
+1)install app "helloworld" (sorry for this name)
+2)Make an entry in Main urls
+3)make migrations
+4)launch
+
 
 Thanks
