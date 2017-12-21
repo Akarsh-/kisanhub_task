@@ -2,7 +2,7 @@
 
 var lstCountryDataOptions = ["Max Temp", "MinTemp", "Mean Temp", "Sunshine", "Rainfall"];
 var DATA_FECTHING_SUCCESSFUL = "data_fectching_successful";
-
+var strMainUrl = "";
 function OnLoad()
 {
 	appMainView.start(appMainView.OnCountriesLoaded.bind(appMainView));
@@ -83,7 +83,7 @@ app.prototype.OnClearDatabaseResponse = function()
 function SendAjax(url, data, callback)
 {
 	$.ajax({
-			url: url,
+			url: strMainUrl + url,
 			data: data,
 			dataType: 'json',
 			success: callback,

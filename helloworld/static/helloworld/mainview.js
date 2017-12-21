@@ -93,7 +93,7 @@ function MainView(parentDiv, lstCountries, lstContValues)
 	var aTag = document.createElement('a');
 	adiv.style.paddingLeft = "24px";
 	adiv.style.paddingTop = "24px";
-	aTag.setAttribute('href',"/Q2");
+	aTag.setAttribute('href', strMainUrl + "/Q2");
 	aTag.innerHTML = "Go To Question2";
 	adiv.appendChild(aTag);
 	parentDiv.appendChild(adiv);
