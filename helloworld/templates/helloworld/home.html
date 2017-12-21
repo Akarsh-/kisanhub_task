@@ -3,5 +3,8 @@
 {%block content %}
 {% load staticfiles %}
 <script src="{% static 'helloworld/mainview.js' %}"></script>
+<script>
+	strMainUrl = '{{ url }}';
+</script>
 {%endblock%}
 		

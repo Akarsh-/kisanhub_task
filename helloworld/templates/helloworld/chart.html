@@ -1,6 +1,9 @@
 {% extends "helloworld/header.html" %}
 
 {% block content %}
+	<script>
+		strMainUrl = '{{ url }}';
+	</script>
 {% load staticfiles %}
 	<link rel= 'stylesheet' href ="{% static 'css/chartCSS.css' %}" type ='text/css'/>
 	<script src="{% static 'helloworld/chart.js' %}"></script>
