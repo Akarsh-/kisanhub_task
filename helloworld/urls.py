@@ -4,12 +4,12 @@ from . import views
 
 urlpatterns = [
 	url(r'^$', views.TableView, name='TableView'),
-	url(r'^Q2$', views.ChartView, name = 'ChartView'),
-	url(r'ajax/gettmaxcountrydata/', views.GetTMaxCountryData, name='GetTMaxCountryData'),
-	url(r'ajax/gettmincountrydata/', views.GetTMinCountryData, name='GetTMinCountryData'),
-	url(r'ajax/gettmeancountrydata/', views.GetTMeanCountryData, name='GetTMeanCountryData'),
-	url(r'ajax/getsunshinecountrydata/', views.GetSunshineCountryData, name='GetSunshineCountryData'),
-	url(r'ajax/getrainfallcountrydata/', views.GetRainfallCountryData, name='GetRainfallCountryData'),
-	url(r'ajax/cleardb/', views.ClearDB, name='ClearDB'),
-	url(r'ajax/getcountry/', views.GetCountries, name='GetCountries'),
+	url(r'^[A-Za-z0-9/]*/Q2$', views.ChartView, name = 'ChartView'),
+	url(r'^[A-Za-z0-9/]*ajax/gettmaxcountrydata/$', views.GetTMaxCountryData, name='GetTMaxCountryData'),
+	url(r'^[A-Za-z0-9/]*ajax/gettmincountrydata/$', views.GetTMinCountryData, name='GetTMinCountryData'),
+	url(r'^[A-Za-z0-9/]*ajax/gettmeancountrydata/$', views.GetTMeanCountryData, name='GetTMeanCountryData'),
+	url(r'^[A-Za-z0-9/]*ajax/getsunshinecountrydata/$', views.GetSunshineCountryData, name='GetSunshineCountryData'),
+	url(r'^[A-Za-z0-9/]*ajax/getrainfallcountrydata/$', views.GetRainfallCountryData, name='GetRainfallCountryData'),
+	url(r'^[A-Za-z0-9/]*ajax/cleardb/$', views.ClearDB, name='ClearDB'),
+	url(r'^[A-Za-z0-9/]*ajax/getcountry/$', views.GetCountries, name='GetCountries'),
 			  ]
